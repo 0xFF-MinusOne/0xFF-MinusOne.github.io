@@ -2,18 +2,22 @@
 (function () {
   var list = document.getElementById('member-list');
   if (!list) return;
+  var en = document.documentElement.lang === 'en';
+  var T = en
+    ? { none: 'No one has made their membership public yet.', all: 'See the organization’s members on GitHub' }
+    : { none: T.none, all: T.all };
   function text(tag, cls, value) {
     var el = document.createElement(tag);
     if (cls) el.className = cls;
     el.textContent = value;
     return el;
   }
-  fetch('members.json', { cache: 'no-cache' })
+  fetch(list.dataset.src || 'members.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (data) {
       list.textContent = '';
       var members = data.members || [];
-      if (!members.length) { list.appendChild(text('div', 'empty', 'メンバーを公開している人は、まだいません。')); return; }
+      if (!members.length) { list.appendChild(text('div', 'empty', T.none)); return; }
       members.forEach(function (m) {
         var a = document.createElement('a');
         a.className = 'card member';
@@ -35,7 +39,7 @@
       list.textContent = '';
       var a = document.createElement('a');
       a.href = 'https://github.com/orgs/0xFF-MinusOne/people';
-      a.textContent = 'GitHub の組織のメンバー一覧を見る';
+      a.textContent = T.all;
       list.appendChild(a);
     });
 })();

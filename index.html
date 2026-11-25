@@ -10,6 +10,12 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://0xff-minusone.github.io/assets/avatar.png">
 <meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://0xff-minusone.github.io/">
+<link rel="alternate" hreflang="ja" href="https://0xff-minusone.github.io/">
+<link rel="alternate" hreflang="en" href="https://0xff-minusone.github.io/en/">
+<link rel="alternate" hreflang="x-default" href="https://0xff-minusone.github.io/en/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/avatar.png">
 <link rel="stylesheet" href="assets/site.css">
@@ -30,6 +36,7 @@
       <a href="#members">メンバー</a>
       <a href="#about">組織について</a>
     </nav>
+    <a class="lang" href="en/" hreflang="en" lang="en" aria-label="Switch to English">EN</a>
   </div>
 </header>
 
@@ -164,7 +171,7 @@
     <div class="wrap">
       <h2>メンバー</h2>
       <p class="sec-lead">GitHub の組織で、メンバーシップを公開にしている人が、自動で載ります（毎日更新）。</p>
-      <div class="cards" id="member-list" aria-live="polite"><div class="empty">読み込み中…</div></div>
+      <div class="cards" id="member-list" data-src="members.json" aria-live="polite"><div class="empty">読み込み中…</div></div>
       <noscript><p><a href="https://github.com/orgs/0xFF-MinusOne/people">GitHub の組織のメンバー一覧を見る</a></p></noscript>
     </div>
   </section>
