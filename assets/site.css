@@ -91,3 +91,9 @@ a.card:hover { border-color: #fff; background: rgba(255, 255, 255, .05); }
   .principles li { grid-template-columns: 48px 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* 翻訳: 先頭だけ出して「もっと見る」で開く(JS が無いときは、全部を出す) */
+.js #tr-grid:not(.open) .extra { display: none; }
+.more { margin-top: 24px; display: block; width: 100%; background: transparent; color: #fff; font: inherit; letter-spacing: .2em; text-transform: uppercase; border: 1px solid var(--line-40); padding: 20px 32px; cursor: pointer; transition: border-color .15s, background .15s; }
+.more:hover { border-color: #fff; background: rgba(255, 255, 255, .05); }
+html:not(.js) .more { display: none; }

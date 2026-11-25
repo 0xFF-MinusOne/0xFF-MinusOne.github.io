@@ -19,7 +19,8 @@
 <link rel="alternate" hreflang="x-default" href="https://0xff-minusone.github.io/">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/avatar.png">
-<link rel="stylesheet" href="../assets/site.css?v=202611251051">
+<link rel="stylesheet" href="../assets/site.css?v=202611251120">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body id="top">
 <a class="skip" href="#main">本文へ移動</a>
@@ -30,7 +31,7 @@
       <span class="vr"></span>
       <span class="word">MINUS ONE</span>
     </a>
-    <nav class="nav" aria-label="メインメニュー"><a href="#top" aria-current="page">ホーム</a><a href="#research">研究</a><a href="#translations">翻訳</a><a href="#open-source">オープンソース</a><a href="#members">メンバー</a><a href="#about">組織について</a><a class="lang" href="../" hreflang="en" lang="en" aria-label="Switch to English">EN</a></nav>
+    <nav class="nav" aria-label="メインメニュー"><a href="#top" aria-current="page">ホーム</a><a href="#about">組織について</a><a href="#research">研究</a><a href="#translations">翻訳</a><a href="#open-source">オープンソース</a><a href="#members">メンバー</a><a class="lang" href="../" hreflang="en" lang="en" aria-label="Switch to English">EN</a></nav>
   </div>
 </header>
 
@@ -55,6 +56,13 @@
     <div class="tiles"><a class="tile" href="#research"><span class="slash">/</span><span class="t">研究</span><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></a><a class="tile" href="#translations"><span class="slash">/</span><span class="t">翻訳</span><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></a><a class="tile" href="#open-source"><span class="slash">/</span><span class="t">オープンソース</span><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></a></div>
   </section>
 
+  <section class="sec" id="about">
+    <p class="eyebrow">ABOUT</p><h2>組織について</h2>
+    <p class="lead">0xFF-MinusOne は、独立したホワイトハットの活動です。コンセプトは「民間企業にたよらない脆弱性対策」です。会社ではなく、企業の依頼で動く活動でもありません。有志が脆弱性を見つけ、直せる開発者や管理者に非公開で報告し、そのために必要な道具を自分たちで作ります。</p>
+    <ol class="principles"><li><div><b>独立しています。</b> 会社ではなく、どのセキュリティ企業にも属しません。</div></li><li><div><b>機密の詳細は手元に置きます。</b> クラウドには、進み具合を追うのに必要なものだけを置きます。</div></li><li><div><b>まず非公開で報告します。</b> 相手は、問題を直せる開発者や管理者です。</div></li><li><div><b>調べるのは、公開されている情報と、許可を得た範囲だけです。</b> 無断で侵入することはしません。</div></li></ol>
+    <p class="fine">質問や訂正は、各リポジトリの Issues にお寄せください。</p>
+  </section>
+
   <section class="sec" id="research">
     <p class="eyebrow">RESEARCH</p><h2>研究</h2>
     <p class="lead">調べるのは、公開されている情報と、許可を得た範囲だけです。結果は、まず直せる開発者や管理者に非公開で報告します。</p>
@@ -64,7 +72,7 @@
   <section class="sec" id="translations">
     <p class="eyebrow">TRANSLATIONS</p><h2>翻訳</h2>
     <p class="lead">セキュリティの学習資料を、日本語に訳しています。いずれも<b>非公式の訳</b>で、原著者の確認や公認を受けたものではありません。内容が食い違う場合は原文が優先されます。原著のライセンスに従って公開しています。誤訳は、各ページの「誤訳を知らせる」から知らせてください。</p>
-    <div class="grid">
+    <div class="grid" id="tr-grid">
         <a class="card" href="https://0xff-minusone.github.io/pwntools-tutorial-ja/">
           <div class="head"><h3>Pwntools チュートリアル</h3><span class="go"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></div>
           <p class="cat">Gallopsled/pwntools-tutorial</p>
@@ -95,42 +103,43 @@
           <p class="cat">0xZ0F/Z0FCourse_ReverseEngineering</p>
           <span class="foot"><span class="on">開く</span><span class="off">AGPL-3.0</span></span>
         </a>
-        <a class="card" href="https://0xff-minusone.github.io/ctf-wiki-ja/">
+        <a class="card extra" href="https://0xff-minusone.github.io/ctf-wiki-ja/">
           <div class="head"><h3>CTF Wiki(Pwn・Reverse・Executable)</h3><span class="go"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></div>
           <p class="cat">ctf-wiki/ctf-wiki</p>
           <span class="foot"><span class="on">開く</span><span class="off">CC BY-NC-SA 4.0</span></span>
         </a>
-        <a class="card" href="https://0xff-minusone.github.io/heap-exploitation-ja/">
+        <a class="card extra" href="https://0xff-minusone.github.io/heap-exploitation-ja/">
           <div class="head"><h3>Heap Exploitation</h3><span class="go"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></div>
           <p class="cat">DhavalKapil/heap-exploitation</p>
           <span class="foot"><span class="on">開く</span><span class="off">CC BY-SA 4.0</span></span>
         </a>
-        <a class="card" href="https://github.com/0xFF-MinusOne/Core-Dump-RE-ja">
+        <a class="card extra" href="https://github.com/0xFF-MinusOne/Core-Dump-RE-ja">
           <div class="head"><h3>Core Dump RE</h3><span class="go"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></div>
           <p class="cat">mytechnotalent/Core-Dump-RE</p>
           <span class="foot"><span class="off">準備中</span><span class="off">MIT</span></span>
         </a>
-        <a class="card" href="https://github.com/0xFF-MinusOne/Hacking-Windows-ja">
+        <a class="card extra" href="https://github.com/0xFF-MinusOne/Hacking-Windows-ja">
           <div class="head"><h3>Hacking Windows</h3><span class="go"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></div>
           <p class="cat">mytechnotalent/Hacking-Windows</p>
           <span class="foot"><span class="off">準備中</span><span class="off">Apache-2.0</span></span>
         </a>
-        <a class="card" href="https://github.com/0xFF-MinusOne/linux-kernel-exploitation-ja">
+        <a class="card extra" href="https://github.com/0xFF-MinusOne/linux-kernel-exploitation-ja">
           <div class="head"><h3>Linux カーネルのエクスプロイト</h3><span class="go"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></div>
           <p class="cat">xairy/linux-kernel-exploitation</p>
           <span class="foot"><span class="off">準備中</span><span class="off">CC BY 4.0</span></span>
         </a>
-        <a class="card" href="https://github.com/0xFF-MinusOne/MBE-ja">
+        <a class="card extra" href="https://github.com/0xFF-MinusOne/MBE-ja">
           <div class="head"><h3>Modern Binary Exploitation</h3><span class="go"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></div>
           <p class="cat">RPISEC/MBE</p>
           <span class="foot"><span class="off">準備中</span><span class="off">BSD-2-Clause</span></span>
         </a>
-        <a class="card" href="https://github.com/0xFF-MinusOne/how2heap-ja">
+        <a class="card extra" href="https://github.com/0xFF-MinusOne/how2heap-ja">
           <div class="head"><h3>how2heap</h3><span class="go"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg></span></div>
           <p class="cat">shellphish/how2heap</p>
           <span class="foot"><span class="off">準備中</span><span class="off">MIT</span></span>
         </a>
     </div>
+    <button class="more" type="button" aria-expanded="false" aria-controls="tr-grid" data-more="もっと見る" data-less="閉じる">もっと見る</button>
   </section>
 
   <section class="sec" id="open-source">
@@ -153,20 +162,13 @@
 
   <section class="sec" id="members">
     <p class="eyebrow">MEMBERS</p><h2>メンバー</h2>
-    <p class="lead">GitHub の組織で、メンバーシップを公開にしている人が、自動で載ります（毎日更新）。</p>
     <div class="grid" id="member-list" data-src="../members.json" aria-live="polite"><div class="empty" style="margin-top:0">読み込み中…</div></div>
     <noscript><p class="fine"><a href="https://github.com/orgs/0xFF-MinusOne/people">GitHub の組織のメンバー一覧を見る</a></p></noscript>
   </section>
 
-  <section class="sec" id="about">
-    <p class="eyebrow">ABOUT</p><h2>組織について</h2>
-    <p class="lead">0xFF-MinusOne は、独立したホワイトハットの活動です。コンセプトは「民間企業にたよらない脆弱性対策」です。会社ではなく、企業の依頼で動く活動でもありません。有志が脆弱性を見つけ、直せる開発者や管理者に非公開で報告し、そのために必要な道具を自分たちで作ります。</p>
-    <ol class="principles"><li><div><b>独立しています。</b> 会社ではなく、どのセキュリティ企業にも属しません。</div></li><li><div><b>機密の詳細は手元に置きます。</b> クラウドには、進み具合を追うのに必要なものだけを置きます。</div></li><li><div><b>まず非公開で報告します。</b> 相手は、問題を直せる開発者や管理者です。</div></li><li><div><b>調べるのは、公開されている情報と、許可を得た範囲だけです。</b> 無断で侵入することはしません。</div></li></ol>
-    <p class="fine">質問や訂正は、各リポジトリの Issues にお寄せください。</p>
-  </section>
 </main>
 
 <footer class="footer">0xFF MINUS ONE</footer>
-<script src="../assets/site.js?v=202611251051" defer></script>
+<script src="../assets/site.js?v=202611251120" defer></script>
 </body>
 </html>

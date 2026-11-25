@@ -43,3 +43,19 @@
       list.appendChild(a);
     });
 })();
+
+/* 翻訳の一覧: 「もっと見る」で、残りを開く・閉じる */
+(function () {
+  var btn = document.querySelector('.more');
+  var grid = document.getElementById('tr-grid');
+  if (!btn || !grid) return;
+  var hidden = grid.querySelectorAll('.extra').length;
+  if (!hidden) { btn.hidden = true; return; }
+  var label = function (open) { btn.textContent = open ? btn.dataset.less : btn.dataset.more + '  (+' + hidden + ')'; };
+  label(false);
+  btn.addEventListener('click', function () {
+    var open = grid.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    label(open);
+  });
+})();
