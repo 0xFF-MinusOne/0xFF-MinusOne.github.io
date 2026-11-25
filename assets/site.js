@@ -5,7 +5,7 @@
   var en = document.documentElement.lang === 'en';
   var T = en
     ? { none: 'No one has made their membership public yet.', all: 'See the organization’s members on GitHub' }
-    : { none: T.none, all: T.all };
+    : { none: 'メンバーを公開している人は、まだいません。', all: 'GitHub の組織のメンバー一覧を見る' };
   function text(tag, cls, value) {
     var el = document.createElement(tag);
     if (cls) el.className = cls;
@@ -30,8 +30,8 @@
         img.loading = 'lazy';
         a.appendChild(img);
         a.appendChild(text('h3', '', m.name));
-        a.appendChild(text('span', 'meta', '@' + m.login));
-        if (m.bio) a.appendChild(text('p', 'small muted', m.bio));
+        a.appendChild(text('p', 'cat', '@' + m.login));
+        if (m.bio) a.appendChild(text('p', 'desc', m.bio));
         list.appendChild(a);
       });
     })
