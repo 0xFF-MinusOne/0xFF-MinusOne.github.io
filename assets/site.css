@@ -59,7 +59,7 @@ h1 span { margin-left: .45em; }
 .sec .lead { margin-top: 16px; max-width: 48rem; color: var(--fg-70); line-height: 1.8; }
 .grid { margin-top: 40px; display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
 .card { display: flex; flex-direction: column; border: 1px solid var(--line-40); padding: 28px; transition: border-color .15s, background .15s; }
-a.card:hover { border-color: #fff; background: rgba(255, 255, 255, .05); }
+a.card:hover, .card.pick:hover, .card.pick.open { border-color: #fff; background: rgba(255, 255, 255, .05); }
 .card .head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .card h3 { font-size: 22px; line-height: 1.4; }
 .card .cat { margin-top: 4px; font-size: 12px; letter-spacing: .2em; color: var(--fg-60); word-break: break-all; }
@@ -68,6 +68,13 @@ a.card:hover { border-color: #fff; background: rgba(255, 255, 255, .05); }
 .card .foot .on { color: #fff; }
 .card .foot .off { color: var(--fg-60); }
 .empty { margin-top: 40px; border: 1px solid var(--line-30); padding: 28px; color: var(--fg-70); }
+.card.pick { cursor: pointer; position: relative; }
+.card.pick:focus-visible { outline: 1px solid #fff; outline-offset: 2px; }
+.card.pick::after { content: "↗"; position: absolute; top: 24px; right: 24px; color: var(--fg-60); }
+.choose { display: none; margin-top: 24px; border-top: 1px solid var(--line-20); padding-top: 16px; gap: 12px; }
+.card.pick.open .choose { display: flex; }
+.choose a { flex: 1; text-align: center; border: 1px solid var(--line-40); padding: 12px 8px; font-size: 14px; letter-spacing: .15em; transition: border-color .15s, background .15s; }
+.choose a:hover, .choose a:focus-visible { border-color: #fff; background: rgba(255, 255, 255, .08); }
 .member img { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--line-40); margin-bottom: 16px; object-fit: cover; }
 .principles { list-style: none; padding: 0; margin: 40px 0 0; border-top: 1px solid var(--line-30); counter-reset: p; }
 .principles li { counter-increment: p; display: grid; grid-template-columns: 72px 1fr; padding: 20px 0; border-bottom: 1px solid var(--line-20); color: var(--fg-85); line-height: 1.8; }

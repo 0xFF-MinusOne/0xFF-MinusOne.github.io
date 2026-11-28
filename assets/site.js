@@ -4,8 +4,25 @@
   if (!list) return;
   var en = document.documentElement.lang === 'en';
   var T = en
-    ? { none: 'No one has made their membership public yet.', all: 'See the organization’s members on GitHub' }
-    : { none: 'メンバーを公開している人は、まだいません。', all: 'GitHub の組織のメンバー一覧を見る' };
+    ? { none: 'No one has made their membership public yet.', all: 'See the organization’s members on GitHub', site: 'Portfolio', pick: 'Where to?' }
+    : { none: 'メンバーを公開している人は、まだいません。', all: 'GitHub の組織のメンバー一覧を見る', site: 'ポートフォリオ', pick: 'どちらを開きますか' };
+  var safe = function (u) { return /^https:\/\//.test(u || '') ? u : ''; };
+  function go(href, label) {
+    var a = text('a', '', label);
+    a.href = href;
+    a.rel = 'noopener';
+    return a;
+  }
+  // 開いている選択肢を閉じる(ほかの場所を押したとき・Esc)
+  function closeAll(except) {
+    list.querySelectorAll('.member.open').forEach(function (c) {
+      if (c === except) return;
+      c.classList.remove('open');
+      c.setAttribute('aria-expanded', 'false');
+    });
+  }
+  document.addEventListener('click', function (e) { if (!list.contains(e.target)) closeAll(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
   function text(tag, cls, value) {
     var el = document.createElement(tag);
     if (cls) el.className = cls;
@@ -19,10 +36,31 @@
       var members = data.members || [];
       if (!members.length) { list.appendChild(text('div', 'empty', T.none)); return; }
       members.forEach(function (m) {
-        var a = document.createElement('a');
-        a.className = 'card member';
-        a.href = m.url;
-        a.rel = 'noopener';
+        var site = safe(m.site);
+        var a;
+        if (site) {
+          // ポートフォリオがある人は、押すと GitHub かポートフォリオかを選べる
+          a = document.createElement('div');
+          a.className = 'card member pick';
+          a.tabIndex = 0;
+          a.setAttribute('role', 'button');
+          a.setAttribute('aria-expanded', 'false');
+          a.setAttribute('aria-label', m.name + ' — ' + T.pick);
+          var toggle = function (e) {
+            if (e.target.closest('.choose a')) return;
+            var open = !a.classList.contains('open');
+            closeAll(a);
+            a.classList.toggle('open', open);
+            a.setAttribute('aria-expanded', String(open));
+          };
+          a.addEventListener('click', toggle);
+          a.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target === a) { e.preventDefault(); toggle(e); } });
+        } else {
+          a = document.createElement('a');
+          a.className = 'card member';
+          a.href = m.url;
+          a.rel = 'noopener';
+        }
         var img = document.createElement('img');
         img.src = m.avatar + (m.avatar.indexOf('?') < 0 ? '?s=96' : '&s=96');
         img.alt = '';
@@ -32,6 +70,12 @@
         a.appendChild(text('h3', '', m.name));
         a.appendChild(text('p', 'cat', '@' + m.login));
         if (m.bio) a.appendChild(text('p', 'desc', m.bio));
+        if (site) {
+          var choose = text('div', 'choose', '');
+          choose.appendChild(go(m.url, 'GitHub'));
+          choose.appendChild(go(site, T.site));
+          a.appendChild(choose);
+        }
         list.appendChild(a);
       });
     })

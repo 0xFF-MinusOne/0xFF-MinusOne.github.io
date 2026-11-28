@@ -8,4 +8,4 @@ auth=""; [ -n "${GH_TOKEN:-}" ] && auth="Authorization: Bearer $GH_TOKEN"
 get() { curl -fsSL -H "Accept: application/vnd.github+json" ${auth:+-H "$auth"} "$1"; }
 logins=$(get "https://api.github.com/orgs/$ORG/public_members?per_page=100" | jq -r '.[].login')
 for l in $logins; do get "https://api.github.com/users/$l"; done \
-  | jq -s '{generated: (now | todate), members: map({login, name: (.name // .login), avatar: .avatar_url, url: .html_url, bio: (.bio // "")})}'
+  | jq -s '{generated: (now | todate), members: map({login, name: (.name // .login), avatar: .avatar_url, url: .html_url, bio: (.bio // ""), site: ((.blog // "") | if . == "" then "" elif test("^https?://") then . else "https://" + . end)})}'
